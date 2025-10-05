@@ -8,12 +8,11 @@ concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: false  # 确保单实例运行
 
-env:
-  TOKEN: ${{ secrets.usdt_billing_assistant_bot }}
-
 jobs:
   execute:
     runs-on: ubuntu-latest
+    env:
+      TOKEN: ${{ secrets.usdt_billing_assistant_bot }}
     steps:
       - uses: actions/checkout@v4
 
