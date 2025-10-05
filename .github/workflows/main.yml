@@ -1,0 +1,36 @@
+name: Python_Bot_Task
+on:
+  workflow_dispatch:
+  workflow_run:
+    workflows: ["Python_Bot_Tasks"]
+    types:
+      - completed  # 触发条件：Workflow 完成（无论成功、失败还是超时）
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: false  # 确保单实例运行
+
+jobs:
+  execute:
+    runs-on: ubuntu-latest
+    env:
+      TOKEN: ${{ secrets.usdt_billing_assistant_bot }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: 安装Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'  # 可指定具体版本
+
+      - name: 安装依赖
+        run: |
+          python -m pip install --upgrade pip
+          pip install aiogram aiohttp-socks
+
+      - name: 开始运行
+        run: |
+          echo "=== 任务开始 ==="
+          # 替换为您的实际Python脚本
+          python mian.py
+          echo "=== 任务结束 ==="
