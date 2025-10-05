@@ -9,7 +9,7 @@ proxy = "socks5://127.0.0.1:10808"
 proxy_type = "0"
 
 # 从环境变量获取secrets Token
-TOKEN = os.getenv('Token')
+TOKEN = os.getenv('TOKEN')
 if not TOKEN:
     raise ValueError("Bot_TOKEN未配置")
     exit()
