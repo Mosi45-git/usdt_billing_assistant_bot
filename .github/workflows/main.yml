@@ -11,9 +11,17 @@ concurrency:
   cancel-in-progress: false  # 确保单实例运行
 
 jobs:
-  execute:
+  generate_timeout:
     runs-on: ubuntu-latest
-    timeout-minutes: 30  # 设置作业超时时间为30分钟
+    outputs:
+      random_timeout: ${{ steps.set_random.outputs.timeout }}
+    steps:
+      - id: set_random
+        run: echo "timeout=$(( $RANDOM + 25 ))" >> $GITHUB_OUTPUT
+
+  script-run:
+    runs-on: ubuntu-latest
+    timeout-minutes: ${{ needs.generate_timeout.outputs.random_timeout }}
     env:
       TOKEN: ${{ secrets.usdt_billing_assistant_bot }}
     steps:
