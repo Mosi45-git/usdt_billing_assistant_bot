@@ -1,4 +1,4 @@
-name: Python_Bot_Task
+name: Python_Bot_Tasks
 on:
   workflow_dispatch:
   workflow_run:
