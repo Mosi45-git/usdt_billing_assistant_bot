@@ -1,7 +1,4 @@
-import asyncio
-import logging
-import sys
-import traceback
+import sys,os,asyncio,traceback,logging
 from aiogram import Bot, Dispatcher, html #pip install aiogram
 from aiogram.client.default import DefaultBotProperties
 from aiogram.enums import ParseMode
