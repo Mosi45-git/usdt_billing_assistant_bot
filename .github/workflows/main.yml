@@ -1,8 +1,10 @@
-name: Python Scheduled Task
+name: Python_Bot_Task
 on:
   workflow_dispatch:
-  schedule:
-    - cron: '*/1 * * * *'  # 每分钟触发(UTC时间)
+  workflow_run:
+    workflows: ["Python_Bot_Task"]
+    types:
+      - completed  # 触发条件：Workflow A 完成（无论成功、失败还是超时）
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
