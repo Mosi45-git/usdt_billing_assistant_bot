@@ -29,7 +29,6 @@ async def command_start_handler(message: Message) -> None:
 @dp.message()
 async def message(message: Message,bot: Bot) -> None:
     try:
-        print(message)
         await message.answer("你好")
     except TypeError:
         await message.answer("触发未知错误")
