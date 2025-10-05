@@ -11,7 +11,11 @@ from aiogram.types import Message
 proxy = "socks5://127.0.0.1:10808"
 proxy_type = "0"
 
-TOKEN = "7328245934:AAERPNBa1XNr1WK2dI1M8gUfjMu7rWjKnHg"
+# 从环境变量获取secrets Token
+TOKEN = os.getenv('Token')
+if not TOKEN:
+    raise ValueError("Bot_TOKEN未配置")
+    exit()
 dp = Dispatcher()
 bot = dict()
 @dp.message(CommandStart())
