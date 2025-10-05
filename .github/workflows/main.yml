@@ -17,7 +17,7 @@ jobs:
       random_timeout: ${{ steps.set_random.outputs.timeout }}
     steps:
       - id: set_random
-        run: echo "timeout=$(( $RANDOM + 25 ))" >> $GITHUB_OUTPUT
+        run: echo "timeout=$(( RANDOM % 21 + 5 ))" >> $GITHUB_OUTPUT
 
   script-run:
     runs-on: ubuntu-latest
