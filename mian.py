@@ -1,7 +1,6 @@
 import asyncio
 import logging
 import sys
-import threading
 import traceback
 from aiogram import Bot, Dispatcher, html #pip install aiogram
 from aiogram.client.default import DefaultBotProperties
@@ -10,7 +9,7 @@ from aiogram.filters import CommandStart
 from aiogram.types import Message
 
 proxy = "socks5://127.0.0.1:10808"
-proxy_type = "1"
+proxy_type = "0"
 
 TOKEN = "7328245934:AAERPNBa1XNr1WK2dI1M8gUfjMu7rWjKnHg"
 dp = Dispatcher()
@@ -47,4 +46,4 @@ def tg_app():
     asyncio.run(aioapp())
 
 if __name__ == '__main__':
-    threading.Thread(target=tg_app).start()
+    tg_app()
